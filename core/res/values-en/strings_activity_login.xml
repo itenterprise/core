@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="title_activity_login">Log in</string>
+	<string name="prompt_login">Login</string>
+	<string name="prompt_password">Password</string>
+	<string name="action_sign_in_register">Sign in</string>
+	<string name="error_invalid_password">Invalid password</string>
+	<string name="error_field_required">You must fill</string>
+	<string name="remember_me">Remember me</string>
+	<string name="login_by_google">Sign in by Google</string>
+</resources>

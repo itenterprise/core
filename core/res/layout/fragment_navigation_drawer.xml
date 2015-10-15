@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/gray_dark"
+              android:orientation="vertical" >
+
+	<LinearLayout
+		android:id="@+id/account_switcher"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="10dp"
+		android:paddingStart="10dp"
+		android:paddingTop="10dp"
+		android:paddingBottom="10dp"
+		android:clickable="false"
+		android:orientation="horizontal" >
+
+		<de.hdodenhof.circleimageview.CircleImageView
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/account_switcher_user_photo"
+			android:layout_width="48dp"
+			android:layout_height="48dp"
+			android:src="@drawable/ic_user_photo"
+			app:border_width="1dp"
+			app:border_color="#EEE"/>
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:paddingLeft="10dp"
+			android:paddingStart="10dp"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/account_switcher_user_name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textStyle="bold"
+				android:textColor="@color/white"/>
+
+			<TextView
+				android:id="@+id/account_switcher_user_details"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="11sp"
+				android:visibility="gone"
+				android:textColor="@color/white"/>
+		</LinearLayout>
+		<ImageButton
+			android:id="@+id/account_switcher_user_options"
+			android:layout_width="48dp"
+			android:layout_height="48dp"
+			android:layout_gravity="center_vertical"
+			android:background="?android:attr/selectableItemBackground"
+			android:src="@drawable/ic_arrow_down_white"/>
+	</LinearLayout>
+
+	<ListView
+		xmlns:tools="http://schemas.android.com/tools"
+	    android:id="@+id/drawer_list_view"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:choiceMode="singleChoice"
+	    tools:context="com.it.core.menu.NavigationDrawerFragment" />
+
+</LinearLayout>

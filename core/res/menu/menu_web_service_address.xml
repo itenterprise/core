@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.it.core.activity.WebServiceAddressActivity">
+
+	<item android:id="@+id/action_add_address"
+	      android:title="@string/add_address"
+	      android:showAsAction="always"
+	      android:icon="@drawable/ic_action_new"/>
+</menu>

@@ -1,0 +1,85 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity" >
+
+    <!-- Login progress -->
+
+    <!-- Login form -->
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            style="@style/LoginFormContainer"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_icon_300"
+                android:contentDescription="Logo" />
+            <!--android:src="@drawable/logo_icon_144"-->
+
+            <EditText
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"
+	            android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:imeActionId="@+id/login"
+                android:imeActionLabel="@string/action_sign_in_register"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="18dp" />
+
+            <CheckBox
+                android:id="@+id/remember_me_checkbox"
+                android:text="@string/remember_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/sign_in_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@drawable/round_corner_button"
+                android:textColor="#ffffff"
+                android:text="@string/action_sign_in_register"
+                android:textSize="18dp" />
+
+			<Button
+				android:id="@+id/sign_in_with_google"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="16dp"
+				android:paddingLeft="16dp"
+				android:paddingRight="16dp"
+				android:background="@drawable/round_corner_button"
+				android:textColor="#ffffff"
+				android:text="@string/login_by_google"
+				android:drawableLeft="@drawable/google"
+				android:textSize="18dp" />
+        </LinearLayout>
+    </ScrollView>
+</merge>

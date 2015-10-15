@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.it.core.activity.WebServiceAddressActivity">
+
+	<item android:id="@+id/action_edit_address"
+	      android:title="@string/edit_address"
+	      app:showAsAction="always"
+	      android:icon="@drawable/ic_action_edit"/>
+
+	<item android:id="@+id/action_remove_address"
+	      android:title="@string/remove_address"
+	      app:showAsAction="always"
+	      android:icon="@drawable/ic_action_discard"/>
+</menu>

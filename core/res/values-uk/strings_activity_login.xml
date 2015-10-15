@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_login">Вхід в систему</string>
+    <string name="prompt_login">Логін</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="action_sign_in_register">Вхід</string>
+    <string name="error_invalid_password">Невірний пароль</string>
+    <string name="error_field_required">Необхідно заповнити</string>
+	<string name="remember_me">Запам\'ятати мене</string>
+	<string name="login_by_google">Увійти через Google</string>
+</resources>

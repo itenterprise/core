@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:tools="http://schemas.android.com/tools"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical"
+				tools:context="com.it.core.activity.DelegatedUsersActivity">
+
+	<TextView
+		android:id="@+id/delegated_users_list_no_items"
+		android:visibility="gone"
+		android:padding="7dp"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:text="@string/no_employees"
+		android:gravity="center_horizontal"
+		android:textSize="18sp" />
+
+	<ListView
+		android:id="@+id/delegated_users_list"
+		android:layout_width="match_parent"
+		android:layout_height="fill_parent" />
+
+</LinearLayout>

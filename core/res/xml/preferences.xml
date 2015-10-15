@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+		<PreferenceCategory
+			android:title="@string/settings">
+	        <!--<EditTextPreference-->
+	            <!--android:capitalize="words"-->
+	            <!--android:inputType="textCapWords"-->
+	            <!--android:selectAllOnFocus="true"-->
+                <!--android:name="WebServiceAddressPreference"-->
+                <!--android:defaultValue="https://demo-mobile.it.ua/ws/WebService.asmx"-->
+                <!--android:title="@string/web_service_address"-->
+                <!--android:key="webServiceAddressPref"/>-->
+			<Preference
+				android:name="WebServiceAddressPreference"
+				android:defaultValue="https://demo-mobile.it.ua/ws/WebService.asmx"
+				android:summary="https://demo-mobile.it.ua/ws/WebService.asmx"
+				android:title="@string/web_service_address"
+				android:key="webServiceAddressPref"/>
+			<Preference android:title="@string/get_link_from_qr"
+				android:key="scanQr"/>
+			<EditTextPreference
+				android:name="AppVersion"
+				android:title="@string/app_version"
+				android:key="appVersion"
+				android:selectable="false"
+				android:summary="%s"
+				android:capitalize="words"
+				android:inputType="textCapWords"
+				android:defaultValue="1.0" />
+			<ListPreference
+				android:name="AppLanguage"
+				android:title="@string/app_language"
+				android:key="appLanguage" />
+		</PreferenceCategory>
+</PreferenceScreen>

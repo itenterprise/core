@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.it.core"
+    android:sharedUserId="com.information.technologies.ltd"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="17" />
+
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!--
+		<activity
+			android:name="com.it.core.activity.LoginActivity"
+			android:label="@string/title_activity_login"
+			android:windowSoftInputMode="adjustResize|stateVisible" >
+		</activity>
+        -->
+        <activity
+            android:name=".activity.SettingsActivityBase"
+            android:label="@string/settings" >
+        </activity>
+        <activity
+            android:name=".activity.NoConnectionToApplicationServerActivity"
+            android:label="@string/title_activity_no_connection_to_application_server" >
+        </activity>
+        <activity
+            android:name=".activity.ExceptionActivity"
+            android:label="@string/exception"
+            android:theme="@style/ActivityWithSlideMenuTheme" />
+        <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:label="@string/change_password" >
+        </activity>
+        <activity
+            android:name=".activity.WebServiceAddressActivity"
+            android:label="@string/web_service_addresses" >
+        </activity>
+        <activity
+            android:name=".activity.DelegatedUsersActivity"
+            android:label="@string/use_rights" >
+        </activity>
+    </application>
+
+</manifest>

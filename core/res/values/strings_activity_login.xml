@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_login">Вход в систему</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="action_sign_in_register">Вход</string>
+    <string name="error_invalid_password">Неверный пароль</string>
+    <string name="error_field_required">Необходимо заполнить</string>
+	<string name="remember_me">Запомнить меня</string>
+	<string name="login_by_google">Войти через Google</string>
+	
+</resources>
