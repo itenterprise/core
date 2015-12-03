@@ -121,7 +121,7 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 	}
 
 	protected void onUrlNotSetUp() {
-		Intent i = new Intent(this, SettingsActivityBase.class);
+		Intent i = new Intent(this, ApplicationBase.getInstance().getSettingsActivityClass());
 		startActivityForResult(i, REQUEST_CODE_FIRST_URL_SET);
 	}
 
@@ -224,7 +224,7 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 	private void checkAuthentication() {
 		if (needsAuthentication()) {
 			Credentials cred = ApplicationBase.getInstance().getCredentials();
-			if (cred == null){
+			if (cred == null) {
 				cred = UserInfo.getCredentials();
 			}
 			if (cred.getGoogleLogin().isEmpty() && (cred.getLogin().isEmpty() || cred.getPassword().isEmpty()))	{
@@ -290,11 +290,11 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 	@SuppressLint("NewApi")
 	protected void createSlidingMenu() {
 		ActionBar ab = getActionBar();
-		if (ab != null){
+		if (ab != null) {
 			ab.setHomeButtonEnabled(true);
 			ab.setDisplayHomeAsUpEnabled(true);
 		}
-		if (slidingMenu != null){
+		if (slidingMenu != null) {
 			return;
 		}
 		slidingMenu = new SlidingMenu(this);
@@ -308,10 +308,10 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 		slidingMenu.setMenu(R.layout.slidingmenu);
 	}
 
-	protected void updateMenu(){
+	protected void updateMenu() {
 		FragmentManager manager = getFragmentManager();
 		SlidingMenuFragment fr = (SlidingMenuFragment)manager.findFragmentById(R.id.slidingmenu);
-		if (fr != null){
+		if (fr != null) {
 			fr.updateMenu();
 		}
 	}
@@ -360,7 +360,7 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			if(mIsNavigationDrawerSet){
+			if(mIsNavigationDrawerSet) {
 				return mNavigationDrawerFragment.onOptionsItemSelected(item);
 			} else {
 				homeAsUpAction(false);
@@ -420,7 +420,7 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 			startActivity(i);
 			break;
 		case SETTINGS_MENU_ITEM:
-			i = new Intent(this, SettingsActivityBase.class);
+			i = new Intent(this, ApplicationBase.getInstance().getSettingsActivityClass());
 			startActivityForResult(i, REQUEST_CODE_URL_CHANGED);
 			break;
 		}
@@ -444,7 +444,9 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 		}
 		// Из настроек. При первом запуске (когда не задан адрес сервера)
 		if (requestCode == REQUEST_CODE_FIRST_URL_SET) {
-			navigateToLogin();
+			if (needsAuthentication()) {
+				navigateToLogin();
+			}
 		}
 		// Из настроек. Изменилась ссылка
 		if (requestCode == REQUEST_CODE_URL_CHANGED && resultCode == RESULT_OK) {
@@ -460,10 +462,12 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 	}
 
 	protected void onUrlChanged() {
-		LoginService login = new LoginService(this);
-		login.logout();
-		Intent i = new Intent(this, LoginActivity.class);
-		startActivity(i);
+		if (needsAuthentication()) {
+			LoginService login = new LoginService(this);
+			login.logout();
+			Intent i = new Intent(this, LoginActivity.class);
+			startActivity(i);
+		}
 	}
 
 	public static boolean isNetworkConnected() {
@@ -487,10 +491,14 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 
 	protected boolean needsCheckVersion() {return true;}
 
+	protected Class<?> settingsActivityClass() {
+		return ApplicationBase.getInstance().getSettingsActivityClass();
+	}
+
 	/**
 	 * Задать выезжающее меню (NavigationDrawer)
 	 * @param layoutId Идентификатор макета активности в ресурсах
-	 * @param contentId Идентификатор елемента в котором отобрается контент
+	 * @param contentId Идентификатор елемента в котором отображается контент
 	 * @param drawerLayoutId Идентификатор макета DrawerLayout
 	 * @param navigationDrawerId Идентификатор NavigationDrawer-а
 	 * @param actionBarMenuId Идентификатор меню
@@ -558,7 +566,7 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 	public void onNavigationDrawerItemSelected(SideMenuItem item) {
 		switch (item.Id) {
 			case SETTINGS_MENU_ITEM:
-				Intent i = new Intent(this, SettingsActivityBase.class);
+				Intent i = new Intent(this, settingsActivityClass());
 				startActivityForResult(i, REQUEST_CODE_URL_CHANGED);
 				return;
 		}

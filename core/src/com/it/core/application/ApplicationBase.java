@@ -217,6 +217,14 @@ public abstract class ApplicationBase extends Application {
 	 */
 	public abstract Class<?> getMainActivityClass();
 
+	/**
+	 * Получить класс настроек приложения
+	 * @return Класс настроек приложения
+	 */
+	public Class<?> getSettingsActivityClass() {
+		return SettingsActivityBase.class;
+	}
+	
     /**
      * Нужно ли проверять наличие VPN соединения
      */
