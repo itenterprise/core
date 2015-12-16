@@ -66,6 +66,8 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 
 
 	private boolean mIsNavigationDrawerSet;
+	private boolean mIsAccountSwitcherEnabled;
+	private boolean mIsDrawerLockedOnTablet;
 	private static String mIsAuthenticated;
 
 	/**
@@ -138,7 +140,7 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 			} catch (PackageManager.NameNotFoundException e) {
 			}
 			final String verFinal = ver;
-			service.ExecObject("INIT", new Object(){
+			service.ExecObject("INIT", new Object() {
 				public final String module = ApplicationBase.getInstance().getSystemModule();
 				public final String project = ApplicationBase.getInstance().getCurrentObject();
 				public final String version = verFinal;
@@ -294,7 +296,7 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 			ab.setHomeButtonEnabled(true);
 			ab.setDisplayHomeAsUpEnabled(true);
 		}
-		if (slidingMenu != null) {
+		if (slidingMenu != null){
 			return;
 		}
 		slidingMenu = new SlidingMenu(this);
@@ -308,7 +310,7 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 		slidingMenu.setMenu(R.layout.slidingmenu);
 	}
 
-	protected void updateMenu() {
+	protected void updateMenu(){
 		FragmentManager manager = getFragmentManager();
 		SlidingMenuFragment fr = (SlidingMenuFragment)manager.findFragmentById(R.id.slidingmenu);
 		if (fr != null) {
@@ -504,9 +506,11 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 	 * @param actionBarMenuId Идентификатор меню
 	 * @param menuItems Пункты меню
 	 * @param menuStartIndex Позиция пункта меню по умолчанию
+	 * @param needsAccountSwitcher Признак наличия AccountSwitcher
+	 * @param isDrawerLockedOnTablet Фиксировать меню на планшетах
 	 */
 	public void setNavigationDrawer(int layoutId, int contentId, int drawerLayoutId, int navigationDrawerId,
-	                                int actionBarMenuId, int actionBarGlobalMenuId, int actionBarGlobalTitleId, ArrayList<SideMenuItem> menuItems, int menuStartIndex){
+	                                int actionBarMenuId, int actionBarGlobalMenuId, int actionBarGlobalTitleId, ArrayList<SideMenuItem> menuItems, int menuStartIndex, boolean needsAccountSwitcher, boolean isDrawerLockedOnTablet) {
 		mLayoutId = layoutId;
 		mContentId = contentId;
 		mDrawerLayoutId = drawerLayoutId;
@@ -519,6 +523,8 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 		mMenuItems.add(new SideMenuItem(GENERAL_MENU_SECTION, getString(R.string.general), null, true));
 		mMenuItems.add(new SideMenuItem(SETTINGS_MENU_ITEM, getString(R.string.settings), R.drawable.ic_settings, false));
 		mIsNavigationDrawerSet = true;
+		mIsAccountSwitcherEnabled = needsAccountSwitcher;
+		mIsDrawerLockedOnTablet = isDrawerLockedOnTablet;
 	}
 
 	public void restoreActionBar() {
@@ -576,7 +582,7 @@ public class ActivityBase extends FragmentActivity implements SlidingMenuHelper,
 
 	private void initUI()
 	{
-		mNavigationDrawerFragment = NavigationDrawerFragment.newInstance(mDrawerLayoutId, mNavigationDrawerId, mGlobalMenuId, mGlobalTitleId, mMenuItems);
+		mNavigationDrawerFragment = NavigationDrawerFragment.newInstance(mDrawerLayoutId, mNavigationDrawerId, mGlobalMenuId, mGlobalTitleId, mMenuItems, mIsAccountSwitcherEnabled, mIsDrawerLockedOnTablet);
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager.beginTransaction()
 				.replace(mNavigationDrawerId, mNavigationDrawerFragment)
